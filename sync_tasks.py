@@ -22,7 +22,8 @@ def main():
     github_auth_header = {"Authorization": f'token {github_token}'}
 
     todoist_token = config["TODOIST_TOKEN"]
-    todoist_project = config["TODOIST_PROJECT"]
+    todoist_project = int(config["TODOIST_PROJECT"])
+
     todoist_auth_header = {"Authorization": f'Bearer {todoist_token}'}
 
     github_json_response = requests.get('https://api.github.com/issues',
@@ -43,10 +44,11 @@ def main():
 
     # create tasks
     for i in new_elementes:
+        print(f'* {i}')
         x = requests.post(
             "https://api.todoist.com/rest/v1/tasks",
             data=json.dumps({
-                "content": f'* {i}',
+                "content": "hello",
                 "due_string": "today",
                 "project_id": todoist_project,
             }),
