@@ -1,7 +1,7 @@
 FROM python:3
 
 WORKDIR /usr/src/app
-RUN pip install flask python-dotenv requests
+RUN pip install flask python-dotenv requests waitress
 COPY . .
 
 EXPOSE 5000
