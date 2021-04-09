@@ -44,11 +44,10 @@ def main():
 
     # create tasks
     for i in new_elementes:
-        print(f'* {i}')
         x = requests.post(
             "https://api.todoist.com/rest/v1/tasks",
             data=json.dumps({
-                "content": "hello",
+                "content": f'* {i}',
                 "due_string": "today",
                 "project_id": todoist_project,
             }),
